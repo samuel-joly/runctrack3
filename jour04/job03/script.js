@@ -33,36 +33,95 @@ $.ajax({
 		$("button").click(function (){
 		
 			$("#displayer div").remove();
+			$("#displayer p").remove();
 
 			let id = $("#id").val();
 			let nom = $("#nom").val();
 			let select_type = $("#type-select").val();
+			
+			let pokedex = [];
+			
 			for(var pokemon of data)
 			{
-				if(pokemon["id"] == id)
+				if(id != "" && nom != "" && select_type != null)
 				{
-					display_pokemon(pokemon);								
-				}
-				if(pokemon["name"] == nom)
-				{
-					display_pokemon(pokemon);														
-				}
-				if(pokemon["type"] == select_type)
-				{
-					display_pokemon(pokemon);														
-				}
-				else if(pokemon["type"].length > 1)
-				{
-					for(var types of pokemon["type"])
+					if(pokemon["id"] == id)
 					{
-						if(types == select_type)
+						if(pokemon["name"]["french"] == nom)
 						{
-							display_pokemon(pokemon);																					
+							for(var type of pokemon["type"])
+							{
+								if(type == select_type)
+								{
+									display_pokemon(pokemon);
+								}
+							}
+						}
+					}
+				}
+				else if(id!= "" && nom != "")
+				{
+					if(pokemon["id"] == id)
+					{
+						if(pokemon["name"]["french"] == nom)
+						{
+							display_pokemon(pokemon);
+						}
+					}
+				}
+				else if(id != "" && select_type != null)
+				{
+					if(pokemon["id"] == id)
+					{
+						for(var type of pokemon["type"])
+						{
+							if(type == select_type)
+							{
+								display_pokemon(pokemon);
+							}
+						}
+					}
+				}
+				else if(nom != "" && select_type != null)
+				{
+					if(pokemon["name"]["french"] == nom)
+					{
+						for(var type of pokemon["type"])
+						{
+							if(type == select_type)
+							{
+								display_pokemon(pokemon);
+							}
+						}
+					}
+				}
+				else if(nom != "")
+				{
+					if(pokemon["name"]["french"] == nom)
+					{
+						display_pokemon(pokemon);											
+					}
+				}
+				else if(id != "")
+				{
+					if(pokemon["id"] == id)
+					{
+						display_pokemon(pokemon);
+					}
+				}
+				else if (select_type != null)
+				{
+				
+					for(var type of pokemon["type"])
+					{
+						if(type == select_type)
+						{
+							console.log(type, select_type);
+							display_pokemon(pokemon);
 						}
 					}
 				}
 			}
-			
 		});
 	}
 });
