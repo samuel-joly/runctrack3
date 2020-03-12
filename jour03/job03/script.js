@@ -45,6 +45,7 @@ $(".imgbox").css("height","143px");
 $(".imgbox").css("margin","1%");
 $(".imgbox").css("border","2px solid black");
 
+
 for(i=0;i<8;i++)
 {
 	var rand = Math.floor(Math.random()*8);
@@ -75,5 +76,22 @@ $(".imgbox").click(function() {
 		var before = $(this).prev();
 		$(this).insertBefore($("#emptyBox"));
 		$("#emptyBox").insertAfter(before);
+	}
+	
+	var code = ["box0","box1","box2","box3","box4","box5","box6","box7","emptyBox"];
+	var childs = $("body").children("div") 
+	console.log(childs,code);
+	win = false;
+	
+	for(i=0;i<childs.length;i++)
+	{
+		if($(childs[i]).attr("id") != code[i])
+		{
+			break;
+		}
+	}
+	if(i==childs.length)
+	{
+		$("body").append("<p style='color:green;'>Vous avez gagné</p>");
 	}
 })

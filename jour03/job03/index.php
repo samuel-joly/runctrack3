@@ -9,7 +9,6 @@
 
 	<body style="display:flex;flex-wrap:wrap;max-height:450px;max-width:500px;">
 		
-		
 		<script src="script.js"></script>
 	</body>
 </html>
