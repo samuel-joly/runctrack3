@@ -1,4 +1,4 @@
-$("button").click(function (){
+$("#filtrer").click(function (){
 	$.ajax({
 		type: "GET",
 		url: "expression.txt",
